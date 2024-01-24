@@ -2,7 +2,13 @@ import { IoCartOutline } from "react-icons/io5";
 import { IoIosLogIn } from "react-icons/io";
 import { FaAngleDown } from "react-icons/fa";
 import { DemostrationCard } from "../../components/DemostrationCard";
+import Modal from 'react-modal';
+import { useState } from "react";
+import { Login } from "../login";
+
 const Home: React.FC = (): JSX.Element => {
+    const [modalOpen, setModalOpen] = useState(false);
+
     return (
         <main className="grid grid-cols-3">
             <div className="col-span-2 relative flex flex-col items-center ">
@@ -50,12 +56,15 @@ const Home: React.FC = (): JSX.Element => {
                     <button className="bg-white rounded-full flex justify-center items-center p-2 ">
                         <IoCartOutline size={20} color="gray" />
                     </button>
-                    <button className="bg-white rounded p-1 px-2 flex gap-2 items-center">
+                    <button onClick={() => setModalOpen(true)} className="bg-white rounded p-1 px-2 flex gap-2 items-center">
                         <IoIosLogIn size={20} color="gray" />
                         Login
                     </button>
                 </header>
             </div>
+            <Modal isOpen={modalOpen} onRequestClose={() => setModalOpen(false)} appElement={document.getElementById("root") as HTMLElement}>
+                <Login setModalOpen={(isOpen: boolean) => setModalOpen(isOpen)} />
+            </Modal>
         </main>
     );
 }
