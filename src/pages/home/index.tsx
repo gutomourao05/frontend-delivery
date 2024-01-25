@@ -17,16 +17,24 @@ const Home: React.FC = (): JSX.Element => {
 
                     <ul className="flex gap-10">
                         <li>
-                            <a href="">Home</a>
+                            <a className="hover:text-orange-600" href="">Home</a>
                         </li>
 
                         <li>
-                            <a href="">Contato</a>
+                            <a className="hover:text-orange-600" href="">Contato</a>
                         </li>
 
-                        <li className="flex gap-2 items-center">
-                            <a href="" >Menu</a>
-                            <FaAngleDown size={15} />
+                        <li className="group">
+                            <div className="flex gap-2 items-center">
+                                <a className="hover:text-orange-600" href="" >Menu</a>
+                                <FaAngleDown size={15} />
+                            </div>
+                            <div className="absolute hidden group-hover:block">
+                                <a className="block hover:text-orange-300" href="">Pizza Doce</a>
+                                <a className="block hover:text-orange-300" href="">Pizza Tradicional</a>
+                                <a className="block hover:text-orange-300" href="">Pizza Especiais</a>
+                                <a className="block hover:text-orange-300" href="">Pizza Nobres</a>
+                            </div>
                         </li>
                     </ul>
                 </header>
@@ -53,10 +61,10 @@ const Home: React.FC = (): JSX.Element => {
 
             <div className="col-span-1 bg-orange-600 h-screen">
                 <header className="w-full h-16 flex items-center justify-center gap-10">
-                    <button className="bg-white rounded-full flex justify-center items-center p-2 ">
+                    <button className="bg-white shadow-xl rounded-full flex justify-center items-center p-2 ">
                         <IoCartOutline size={20} color="gray" />
                     </button>
-                    <button onClick={() => setModalOpen(true)} className="bg-white rounded p-1 px-2 flex gap-2 items-center">
+                    <button onClick={() => setModalOpen(true)} className="shadow-xl bg-white rounded p-1 px-2 flex gap-2 items-center">
                         <IoIosLogIn size={20} color="gray" />
                         Login
                     </button>
