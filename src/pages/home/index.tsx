@@ -3,7 +3,7 @@ import { IoIosLogIn } from "react-icons/io";
 import { FaAngleDown } from "react-icons/fa";
 import { DemostrationCard } from "../../components/DemostrationCard";
 import Modal from 'react-modal';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Login } from "../login";
 import { Card } from "../cart";
 import { Link } from "react-router-dom";
@@ -11,6 +11,17 @@ import { Link } from "react-router-dom";
 const Home: React.FC = (): JSX.Element => {
   const [modalOpen, setModalOpen] = useState(false);
   const [openCard, setOpenCard] = useState(false);
+  const [user, setUser] = useState(null);
+
+  const getUser = localStorage.getItem('user');
+  useEffect(() => {
+    setUser(JSON.parse(getUser!))
+  }, [getUser])
+
+  function handleLogout() {
+    setUser(null);
+    localStorage.clear()
+  }
 
   return (
     <main className="grid grid-cols-3">
@@ -24,7 +35,7 @@ const Home: React.FC = (): JSX.Element => {
             </li>
 
             <li>
-              <a className="hover:text-orange-600" href="">Contato</a>
+              <a className="hover:text-orange-600" href="">Meus Pedidos</a>
             </li>
 
             <li className="group">
@@ -33,9 +44,9 @@ const Home: React.FC = (): JSX.Element => {
                 <FaAngleDown size={15} />
               </div>
               <div className="absolute hidden group-hover:block">
-                <Link className="block hover:text-orange-300" to="/menu#doce">Pizza Doce</Link>
-                <Link className="block hover:text-orange-300" to="/menu#tradicional">Pizza Tradicional</Link>
-                <Link className="block hover:text-orange-300" to="/menu#nobres">Pizza Nobres</Link>
+                <Link className="block hover:text-orange-300" to="/menu">Pizza Tradicional</Link>
+                <Link className="block hover:text-orange-300" to="/menu">Pizza Tradicional</Link>
+                <Link className="block hover:text-orange-300" to="/menu">Pizza Tradicional</Link>
               </div>
             </li>
           </ul>
@@ -54,22 +65,27 @@ const Home: React.FC = (): JSX.Element => {
 
         <footer className="mt-32">
           <div className="bg-white flex gap-8">
-            <DemostrationCard image="./src/assets/img_pizza-fotor-2024012118438.png" title="Pizza Doce" />
-            <DemostrationCard image="./src/assets/img_pizza-fotor-2024012118438.png" title="Pizza Tradicional" />
-            <DemostrationCard image="./src/assets/img_pizza-fotor-2024012118438.png" title="Pizza Nobres" />
+            <DemostrationCard link="/menu" image="./src/assets/img_pizza-fotor-2024012118438.png" title="Pizza Tradicional" />
+            <DemostrationCard link="/menu" image="./src/assets/img_pizza-fotor-2024012118438.png" title="Pizza Tradicional" />
+            <DemostrationCard link="/menu" image="./src/assets/img_pizza-fotor-2024012118438.png" title="Pizza Tradicional" />
           </div>
         </footer>
       </div>
 
       <div className="col-span-1 bg-orange-600 h-screen">
         <header className="w-full h-16 flex items-center justify-center gap-10">
+          {user && <span className="text-white text-lg">Bem vindo, {user?.name.split(' ')[0]}</span>}
+
           <button onClick={() => setOpenCard(!openCard)} className="bg-white shadow-xl rounded-full flex justify-center items-center p-2 ">
             <IoCartOutline size={20} color="gray" />
           </button>
-          <button onClick={() => setModalOpen(true)} className="shadow-xl bg-white rounded p-1 px-2 flex gap-2 items-center">
+          {!user ? (<button onClick={() => setModalOpen(true)} className="shadow-xl bg-white rounded p-1 px-2 flex gap-2 items-center">
             <IoIosLogIn size={20} color="gray" />
             Login
-          </button>
+          </button>) : <button onClick={() => handleLogout()} className="shadow-xl bg-white rounded p-1 px-2 flex gap-2 items-center">
+            <IoIosLogIn size={20} color="gray" />
+            Logout
+          </button>}
         </header>
       </div>
       <Modal isOpen={modalOpen} onRequestClose={() => setModalOpen(false)} appElement={document.getElementById("root") as HTMLElement}>
