@@ -7,6 +7,9 @@ export default {
   theme: {
     extend: {
       display: ["group-hover"],
+      fontFamily: {
+        'montserrat': ['Montserrat'],
+      }
     },
   },
   plugins: [],

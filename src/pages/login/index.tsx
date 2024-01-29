@@ -1,9 +1,13 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
-import { LoginProps, login } from '../../requests/AuthRequest';
 interface Props {
   setModalOpen: (isOpen: boolean) => void
+}
+
+export interface LoginProps {
+  email: string;
+  password: string;
 }
 
 const loginFormSchema = z.object({
@@ -16,16 +20,7 @@ const Login: React.FC<Props> = ({ setModalOpen }): JSX.Element => {
   });
 
   async function handleLogin(data: LoginProps) {
-    const { email, password } = data
-    const user = await login({ email, password });
-    if (!user.token) {
-      return false
-    }
-
-    localStorage.setItem('token', user.token);
-    localStorage.setItem('user', JSON.stringify(user.user));
-
-    setModalOpen(false);
+    console.log(data)
   }
 
   return (

@@ -24,7 +24,7 @@ const Home: React.FC = (): JSX.Element => {
   }
 
   return (
-    <main className="grid grid-cols-3">
+    <main className="grid grid-cols-3 font-montserrat">
       <div className="col-span-2 relative flex flex-col items-center ">
         <header className="w-full h-16 flex items-center justify-around">
           <img className="w-10 mt-1" src="./src/assets/img_pizza-fotor-2024012118438.png" alt="logo" />
@@ -44,9 +44,9 @@ const Home: React.FC = (): JSX.Element => {
                 <FaAngleDown size={15} />
               </div>
               <div className="absolute hidden group-hover:block">
-                <Link className="block hover:text-orange-300" to="/menu">Pizza Tradicional</Link>
-                <Link className="block hover:text-orange-300" to="/menu">Pizza Tradicional</Link>
-                <Link className="block hover:text-orange-300" to="/menu">Pizza Tradicional</Link>
+                <Link className="block hover:text-orange-300" to="#">Pizza Tradicional</Link>
+                <Link className="block hover:text-orange-300" to="#">Pizza Tradicional</Link>
+                <Link className="block hover:text-orange-300" to="#">Pizza Tradicional</Link>
               </div>
             </li>
           </ul>
@@ -57,7 +57,7 @@ const Home: React.FC = (): JSX.Element => {
             <h1 className="text-5xl font-bold">Peperoni</h1>
             <h1 className="text-5xl font-bold"> Pizza Gourmet</h1>
             <p className="mt-5">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatum, ut earum! Neque provident ad vero assumenda libero, soluta doloribus, voluptates repellendus maxime molestias nostrum. Doloribus dolorem itaque rem rerum eos.</p>
-            <Link className="w-32 mt-10 bg-orange-600 text-white px-5 py-2 rounded hover:bg-orange-700 block" to={'/menu'}>Veja Menu</Link>
+            <Link className="w-32 mt-10 bg-orange-600 text-white px-5 py-2 rounded hover:bg-orange-700 block" to="#">Veja Menu</Link>
           </div>
         </section>
 
@@ -65,9 +65,9 @@ const Home: React.FC = (): JSX.Element => {
 
         <footer className="mt-32">
           <div className="bg-white flex gap-8">
-            <DemostrationCard link="/menu" image="./src/assets/img_pizza-fotor-2024012118438.png" title="Pizza Tradicional" />
-            <DemostrationCard link="/menu" image="./src/assets/img_pizza-fotor-2024012118438.png" title="Pizza Tradicional" />
-            <DemostrationCard link="/menu" image="./src/assets/img_pizza-fotor-2024012118438.png" title="Pizza Tradicional" />
+            <DemostrationCard link="#" image="./src/assets/img_pizza-fotor-2024012118438.png" title="Pizza Tradicional" />
+            <DemostrationCard link="#" image="./src/assets/img_pizza-fotor-2024012118438.png" title="Pizza Tradicional" />
+            <DemostrationCard link="#" image="./src/assets/img_pizza-fotor-2024012118438.png" title="Pizza Tradicional" />
           </div>
         </footer>
       </div>
