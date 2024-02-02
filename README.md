@@ -1,4 +1,4 @@
-# Front-Delivery
+# Front-Delivery - Pizzaria Peperoni
 
 Para fins de portifólio front.
 
@@ -11,7 +11,7 @@ Para fins de portifólio front.
 
 ## Visão Geral
 
-Frontend para fins de portifólio de layout sem nenhuma funcionalidade implementada.
+Frontend para fins de portifólio
 
 ## Páginas
  - Menu drop-down
@@ -28,6 +28,7 @@ Frontend para fins de portifólio de layout sem nenhuma funcionalidade implement
 - react-hook-form
 - Zod
 - Typescript
+- Tailwindcss
 
 ## Instalação
 
